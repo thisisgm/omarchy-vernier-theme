@@ -1,8 +1,5 @@
-# Two border tokens feed every shell surface, and splitting them splits the desktop
-# into two honest categories: transient things that want you keep the accent,
-# persistent cards you opened on purpose go neutral. A brass outline around a
-# full-screen launcher would be the loudest thing on screen, announcing something
-# you already know.
+# active-border is the transient category, surfaces that want you now, so it keeps the accent.
+# active-border-foreground is for cards you opened on purpose, so it stays neutral.
 [hyprland]
 active-border            = "#b38956"
 active-border-foreground = "#31363a"

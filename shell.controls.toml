@@ -1,9 +1,5 @@
-# Control states, quietest to loudest: normal < hover < selected < focus.
-#
-# The stock template makes focus identical to hover, which leaves keyboard users
-# no way to tell "the mouse is over this" from "typing goes here". Focus gets the
-# brass, and it is the only state that does. A selected row reads as brighter ink
-# instead, because a selected row is not necessarily the focused one.
+# Normal and hover are ink at rising alpha; selected is brighter ink; focus is the only state that gets colour.
+# The stock template makes focus identical to hover, which leaves keyboard users no way to tell one from the other.
 [controls]
 normal-color        = "#b3b9bd"
 normal-fill-alpha   = 0.03
