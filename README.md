@@ -22,9 +22,10 @@ rather than chosen:
 
 - the surface hue, OKLab **236.68**, is the chroma-weighted mean hue of
   Solitude's twelve-colour slate ladder;
-- the chroma every colour carries comes from a least-squares fit of Solitude's
-  own chroma against lightness, `C(L) = 0.0660 * L^1.286 * (1-L)^1.117`,
-  residual rms 0.00425;
+- the chroma each **surface and ink** carries comes from a least-squares fit of
+  Solitude's own chroma against lightness, `C(L) = 0.0660 * L^1.286 * (1-L)^1.117`,
+  residual rms 0.00425. The ring does not use it: the ring is held at a uniform
+  chroma, and the accent at its own, both stated below;
 - the accent hue, **70.9**, is the chroma-weighted mean hue of Solitude's two
   warm inks, `#cbc2be` and `#c9c2b4`. Solitude has a warm direction already; it
   just never spends it on anything;
@@ -32,13 +33,13 @@ rather than chosen:
 
 ## What the measurement found
 
-Solitude is a beautiful theme with six measurable faults. Vernier keeps the
-shape and fixes them. The last row is not one of them: it is a constraint
-Solitude never had and Vernier adds.
+Solitude is a beautiful theme with six measurable faults. Vernier keeps the shape
+and fixes them. The `Accent against its nearest ring colour` row is not one of
+them: it is a constraint Solitude never had and Vernier adds.
 
 | | Solitude | Vernier |
 |---|---|---|
-| Surface ladder, OKLab steps | 0.019, 0.022, 0.051 | even, 0.0311 throughout |
+| Surface ladder, OKLab steps | 0.019, 0.022, 0.051 | even, 0.0311 throughout, which the Surfaces table below rounds to three places |
 | Emphasis ink vs body ink | `bright_foreground` sits **0.098 darker** than `foreground` | ordered, emphasis is the lightest rung |
 | Ring colours clearing WCAG AA on all four surfaces | 6 of 12 | **12 of 12** |
 | Tightest pair meaning different things, worst case over normal, protan, deutan and tritan vision. A colour and its own bright variant are one meaning, so that pair is excluded | 0.0222, `red` against `bright_blue` | **0.0469** |
@@ -64,11 +65,13 @@ Foreground over background measures 11.06:1.
 
 Solitude's ring is deliberately near-neutral, and measurement says a fully
 neutral ring cannot carry twelve meanings. Clearing AA against the lightest
-surface puts a floor at OKLab lightness 0.616, which leaves a band of about 0.33
-to hold twelve colours; under dichromacy the red-green axis is gone, so hue can
-only help along blue-yellow. The ring is held at **C 0.105**, which is where a chroma
-sweep stopped buying separation, and still well under the 0.125 a fully coloured
-ring wants.
+surface puts a floor at OKLab lightness 0.616, and a base colour is capped at
+0.800 so its bright variant does not land in pastel. With the bright step
+counted that leaves 0.616 to 0.950, a band of about 0.33 to hold twelve colours.
+Under dichromacy the red-green axis is gone, so hue can only help along
+blue-yellow. The ring is held at **C 0.105**, which is where a chroma sweep
+stopped buying separation, and still well under the 0.125 a fully coloured ring
+wants.
 
 The accent is solved as a thirteenth meaning, not left out of it. Focus is a
 distinct thing from an error or a success, so `#b38956` sits in the same
@@ -76,12 +79,12 @@ separation cost as the twelve. Leaving it out of that cost is not hypothetical:
 an earlier build did exactly that and put the accent **0.0239** from `red`,
 tighter than anything inside the ring. Constrained, it sits at 0.0534.
 
-Only the six base colours are solved. Each bright variant is derived from its
-base at a lightness step solved per family, 0.108 to 0.119, with chroma eased
-5 percent and then clipped to the sRGB gamut. The clip is what it sounds like:
-`bright_red` and `bright_blue` sit on the gamut boundary and lose 15 and 18
-percent of their base chroma rather than 5. Every family still separates by
-lightness, which is the property the step exists for.
+Only the six base ring colours are solved that way. Each bright variant is
+derived from its base at a lightness step solved per family, 0.108 to 0.119,
+with chroma eased 5 percent and then clipped to the sRGB gamut. The clip is what
+it sounds like: `bright_red` and `bright_blue` sit on the gamut boundary and lose
+15 and 18 percent of their base chroma rather than 5. Every family still
+separates by lightness, which is the property the step exists for.
 
 Solving all twelve independently scored better on paper and produced `green` and
 `bright_green` at the same hex, which is the exact defect this theme exists to
@@ -141,7 +144,7 @@ edge never picks up the dark fringe that blending encoded sRGB produces.
 
 The flat-fill claim you can confirm on the shipped PNGs without trusting me.
 Every master is 6016 x 3384, and its eleven most common colours account for at
-least 99.80 percent of its pixels. `4-palette` carries twelve cards plus a
+least 99.79 percent of its pixels. `4-palette` carries twelve cards plus a
 ground, so for that one it is the top thirteen. What is left is the one-pixel
 anti-aliased seam along every shape edge, against the ground or against whichever
 card lies beneath.
@@ -178,7 +181,7 @@ The paper ladder. Ten stops from the canvas surface up to comment grey, on the d
 
 ![2-ink](docs/2-ink.webp)
 
-The ink ladder. Comment grey up to emphasis ink, a close-valued study where the whole ramp spans 0.265 in lightness. The brightest of the five. Mean relative luminance 0.2456.
+The ink ladder. Comment grey up to emphasis ink, a close-valued study where the whole ramp spans 0.265 in lightness. Mean relative luminance 0.2456.
 
 ### 3-accent
 
@@ -196,7 +199,7 @@ The ring. All twelve ANSI colours in hue order, each family's bright leading its
 
 ![5-inverted](docs/5-inverted.webp)
 
-The same surface ladder, dark leading, on content ink. The only light ground in the set. Mean relative luminance 0.3519.
+The same surface ladder, dark leading, on content ink. The only light ground in the set, and the brightest of the five. Mean relative luminance 0.3519.
 
 ## Notes
 

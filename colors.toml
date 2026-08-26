@@ -5,8 +5,8 @@ mode = "dark"
 # Brass, the only loud colour, and it means focus and active borders, nothing else.
 accent = "#b38956"
 
-selection = "#31363a"   # a surface, so no contrast floor applies
-muted     = "#868d93"   # comments: the lowest rung that still clears AA on every surface
+selection = "#31363a"   # the selection highlight; foreground on it is 7.56:1
+muted     = "#868d93"   # comments: the lowest rung clearing AA on all four surfaces
 
 # Surface ladder, even OKLab steps of 0.0311 on hue 236.68.
 darker_background  = "#080a0b"   # deepest: code blocks, lock screen

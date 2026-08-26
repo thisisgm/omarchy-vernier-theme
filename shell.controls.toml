@@ -20,9 +20,7 @@ focus-border-alpha = 0.95
 
 selected-color        = "#c8ccd0"
 selected-fill-alpha   = 0.14
-selected-border       = "#c8ccd0"
 selected-border-width = 0
-selected-border-alpha = 1.0
 
 pressed-fill-alpha   = 0.20
 selection-fill-alpha = 0.35
