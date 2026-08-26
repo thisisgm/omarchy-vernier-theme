@@ -136,13 +136,15 @@ carries twelve because the ring has twelve colours.
 
 Flat fills, no shadow, no gradient, and no dither, because a frame of flat fills
 has no gradient to band. Shapes are composited by coverage in linear light, so an
-edge never picks up the dark fringe that blending encoded sRGB produces. `audit.py`
-re-renders each master from source and compares it byte for byte to the shipped
-PNG, then checks that no pixel falls outside the range of the fills that built the
-frame and that over 99 percent of pixels are exactly one fill. All five pass at
-99.8 percent flat with zero overshoot. That renderer and its audit are not part
-of this repo and are not published; this repo ships the theme. The figures above
-are what they reported on exactly these files.
+edge never picks up the dark fringe that blending encoded sRGB produces.
+
+One of those properties you can check on the shipped PNGs yourself, with any tool
+that counts colours and needing no trust in me: every master is 6016 x 3384, and
+99.8 percent of its pixels are exactly one of eleven flat colours, thirteen for
+`4-palette`, which carries twelve cards plus its ground. The remainder are the one-pixel anti-aliased seams between shapes.
+The other property, that each master is byte-identical to what its source
+renders, needs the renderer, and the renderer is not published. Take that one as
+an author's claim rather than something you can confirm from this repo.
 
 ### 1-surfaces
 
