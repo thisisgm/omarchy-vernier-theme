@@ -32,8 +32,9 @@ rather than chosen:
 
 ## What the measurement found
 
-Solitude is a beautiful theme with four measurable faults. Vernier keeps the
-shape and fixes these:
+Solitude is a beautiful theme with six measurable faults. Vernier keeps the
+shape and fixes them. The last row is not one of them: it is a constraint
+Solitude never had and Vernier adds.
 
 | | Solitude | Vernier |
 |---|---|---|
