@@ -1,0 +1,188 @@
+# Vernier
+
+A dark theme for [Omarchy](https://omarchy.org). Solitude's geometry, measured
+and regularised, with one brass voice.
+
+A vernier is the second scale on a caliper, the one that reads finer than the
+eye can. Nothing here was picked by eye either.
+
+![Vernier](preview.png)
+
+## Install
+
+```bash
+omarchy theme install https://github.com/thisisgm/omarchy-vernier-theme.git
+```
+
+## Where it comes from
+
+Vernier is not inspired by Solitude, it is derived from it. Every constant in
+`colors.toml` was measured off `/usr/share/omarchy/themes/solitude/colors.toml`
+rather than chosen:
+
+- the surface hue, OKLab **236.68**, is the chroma-weighted mean hue of
+  Solitude's twelve-colour slate ladder;
+- the chroma every colour carries comes from a least-squares fit of Solitude's
+  own chroma against lightness, `C(L) = 0.0660 * L^1.286 * (1-L)^1.117`,
+  residual rms 0.00425;
+- the accent hue, **70.9**, is the chroma-weighted mean hue of Solitude's two
+  warm inks, `#cbc2be` and `#c9c2b4`. Solitude has a warm direction already; it
+  just never spends it on anything;
+- `darker_background` is byte-identical to Solitude's.
+
+## What the measurement found
+
+Solitude is a beautiful theme with four measurable faults. Vernier keeps the
+shape and fixes these:
+
+| | Solitude | Vernier |
+|---|---|---|
+| Surface ladder, OKLab steps | 0.019, 0.022, 0.051 | even, 0.0311 throughout |
+| Emphasis ink vs body ink | `bright_foreground` sits **0.098 darker** than `foreground` | ordered, emphasis is the lightest rung |
+| Ring colours clearing WCAG AA on all four surfaces | 6 of 12 | **12 of 12** |
+| Tightest cross-meaning pair in the ring, worst case over normal, protan, deutan and tritan vision | 0.0222 (`cyan` and `bright_cyan` are the same hex) | **0.0469** |
+| Accent against its nearest ring colour | not a constraint | **0.0534** |
+| A diff's `+` against its `-` | **inverted**, `bright_green` sits 0.290 darker than `bright_red` | `+` leads by 0.0685 for every viewer |
+
+Foreground over background measures 11.06:1.
+
+## The three rules
+
+1. **One material.** Every surface and every ink sits on the same hue and
+   carries the chroma its lightness earns. Paper and ink are the same stone.
+2. **One voice.** Brass `#b38956` is the only colour allowed to be loud, and it
+   means exactly one thing: this is what has focus. sRGB tops out at C 0.142 on
+   this hue at this lightness, and past about 0.10 the blue channel bottoms out
+   and brass turns to mustard, so it is held at C 0.085.
+3. **Everything clears AA.** All twelve ring colours clear 4.5:1 against all four
+   surfaces. That requirement is what costs the ring its lightness range, and it
+   is why the ring is solved rather than picked.
+
+## Why the ring is solved, not picked
+
+Solitude's ring is deliberately near-neutral, and measurement says a fully
+neutral ring cannot carry twelve meanings. Clearing AA against the lightest
+surface puts a floor at OKLab lightness 0.616, which leaves a band of about 0.33
+to hold twelve colours; under dichromacy the red-green axis is gone, so hue can
+only help along blue-yellow. The ring is held at **C 0.105**, which is where a chroma
+sweep stopped buying separation, and still well under the 0.125 a fully coloured
+ring wants.
+
+The accent is solved as a thirteenth meaning, not left out of it. Focus is a
+distinct thing from an error or a success, so `#b38956` sits in the same
+separation cost as the twelve. Leaving it out of that cost is not hypothetical:
+an earlier build did exactly that and put the accent **0.0239** from `red`,
+tighter than anything inside the ring. Constrained, it sits at 0.0534.
+
+Only the six base colours are solved. Each bright variant is derived from its
+base at a solved lightness step with chroma eased 5 percent, so a family always
+separates by lightness. Solving all twelve independently scored better on paper
+and produced `green` and `bright_green` at the same hex, which is the exact
+defect this theme exists to fix.
+
+Red is the one exemption: it carries 20 percent more chroma, because an error
+that fails to alarm has failed.
+
+### Surfaces
+
+| name | hex | OKLab L |
+|---|---|---|
+| `darker_background` | `#080a0b` | 0.143 |
+| `dark_background` | `#0e1112` | 0.175 |
+| `background` | `#14181a` | 0.206 |
+| `lighter_background` | `#1b1f21` | 0.236 |
+
+### Ink
+
+| name | hex | OKLab L | worst contrast on any surface |
+|---|---|---|---|
+| `bright_foreground` | `#dde0e2` | 0.905 | 12.52:1 |
+| `foreground` | `#c8ccd0` | 0.843 | 10.28:1 |
+| `light_foreground` | `#b3b9bd` | 0.782 | 8.38:1 |
+| `dark_foreground` | `#9fa6ab` | 0.721 | 6.73:1 |
+| `muted` | `#868d93` | 0.640 | 4.94:1 |
+
+### Ring
+
+| name | hex | OKLab L | C | hue | worst contrast on any surface |
+|---|---|---|---|---|---|
+| `red` | `#e37d7d` | 0.702 | 0.126 | 20.8 | 5.93:1 |
+| `yellow` | `#b8ae5c` | 0.742 | 0.105 | 102.4 | 7.31:1 |
+| `green` | `#82c68e` | 0.766 | 0.106 | 149.0 | 8.24:1 |
+| `cyan` | `#27a6a2` | 0.659 | 0.105 | 191.7 | 5.58:1 |
+| `blue` | `#80a4e6` | 0.718 | 0.105 | 262.1 | 6.62:1 |
+| `magenta` | `#ca8bc2` | 0.717 | 0.105 | 331.1 | 6.31:1 |
+| `bright_red` | `#ffa5a3` | 0.811 | 0.107 | 21.1 | 8.83:1 |
+| `bright_yellow` | `#dbd183` | 0.851 | 0.099 | 101.9 | 10.64:1 |
+| `bright_green` | `#abecb6` | 0.885 | 0.099 | 149.2 | 12.18:1 |
+| `bright_cyan` | `#5ecbc6` | 0.777 | 0.100 | 191.2 | 8.57:1 |
+| `bright_blue` | `#a8c7ff` | 0.827 | 0.086 | 262.1 | 9.71:1 |
+| `bright_magenta` | `#ecaee3` | 0.825 | 0.100 | 331.5 | 9.28:1 |
+
+## Backgrounds
+
+Five wallpapers, one layout, five ramps, all rendered natively at 6016 x 3384
+(16:9 6K). The layout is a fanned stack of rounded swatches, measured off a
+reference render rather than eyeballed: card width 0.125 of the frame, step
+0.0643, so cards overlap 49 percent; card height 0.7122; corner radius half the
+card width, which makes each card a stadium. Ten cards, except `4-palette`, which
+carries twelve because the ring has twelve colours.
+
+Flat fills, no shadow, no gradient, and no dither, because a frame of flat fills
+has no gradient to band. Shapes are composited by coverage in linear light, so an
+edge never picks up the dark fringe that blending encoded sRGB produces. `audit.py`
+re-renders each master from source and compares it byte for byte to the shipped
+PNG, then checks that no pixel falls outside the range of the fills that built the
+frame and that over 99 percent of pixels are exactly one fill. All five pass at
+99.8 percent flat with zero overshoot.
+
+### 1-surfaces
+
+![1-surfaces](docs/1-surfaces.webp)
+
+The paper ladder. Ten stops from the canvas surface up to comment grey, on the deepest surface. The quietest of the five. Mean relative luminance 0.0565.
+
+### 2-ink
+
+![2-ink](docs/2-ink.webp)
+
+The ink ladder. Comment grey up to emphasis ink, a close-valued study where the whole ramp spans 0.265 in lightness. The brightest of the five. Mean relative luminance 0.2456.
+
+### 3-accent
+
+![3-accent](docs/3-accent.webp)
+
+Brass. Ten stops on the accent hue, each holding the same fraction of the sRGB gamut, so saturation reads constant while lightness does the work. Mean relative luminance 0.1548.
+
+### 4-palette
+
+![4-palette](docs/4-palette.webp)
+
+The ring. All twelve ANSI colours in hue order, each family's bright leading its base, which doubles as a legibility check on the set. Mean relative luminance 0.2765.
+
+### 5-inverted
+
+![5-inverted](docs/5-inverted.webp)
+
+The same surface ladder, dark leading, on content ink. The only light ground in the set. Mean relative luminance 0.3519.
+
+## Notes
+
+Terminal colours render at Omarchy's stock window opacity (`0.985` focused,
+`0.96` unfocused), so on-screen values sit slightly off the literal hex. That is
+a compositor setting shared by every Omarchy theme, not a property of this one.
+Set `opacity = "1.0 1.0"` in `~/.config/hypr/looknfeel.lua` for pixel-exact
+colour.
+
+Vernier is not affiliated with or endorsed by the Solitude theme or its author.
+It is a derived work in the sense that its constants were measured from
+Solitude's published palette.
+
+## Support
+
+If Vernier earned a place on your desktop, you can
+[buy me a coffee](https://buymeacoffee.com/thisisgm).
+
+## License
+
+MIT. See [LICENSE](LICENSE).

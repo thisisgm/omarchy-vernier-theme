@@ -1,0 +1,33 @@
+# Control states, quietest to loudest: normal < hover < selected < focus.
+#
+# The stock template makes focus identical to hover, which leaves keyboard users
+# no way to tell "the mouse is over this" from "typing goes here". Focus gets the
+# brass, and it is the only state that does. A selected row reads as brighter ink
+# instead, because a selected row is not necessarily the focused one.
+[controls]
+normal-color        = "#b3b9bd"
+normal-fill-alpha   = 0.03
+normal-border       = "#b3b9bd"
+normal-border-width = 1
+normal-border-alpha = 0.22
+
+hover-cursor-color        = "#b3b9bd"
+hover-cursor-fill-alpha   = 0.07
+hover-cursor-border       = "#b3b9bd"
+hover-cursor-border-width = 1
+hover-cursor-border-alpha = 0.34
+
+focus-color        = "accent"
+focus-fill-alpha   = 0.10
+focus-border       = "accent"
+focus-border-width = 1
+focus-border-alpha = 0.95
+
+selected-color        = "#c8ccd0"
+selected-fill-alpha   = 0.14
+selected-border       = "#c8ccd0"
+selected-border-width = 0
+selected-border-alpha = 1.0
+
+pressed-fill-alpha   = 0.20
+selection-fill-alpha = 0.35

@@ -1,0 +1,8 @@
+# Two border tokens feed every shell surface, and splitting them splits the desktop
+# into two honest categories: transient things that want you keep the accent,
+# persistent cards you opened on purpose go neutral. A brass outline around a
+# full-screen launcher would be the loudest thing on screen, announcing something
+# you already know.
+[hyprland]
+active-border            = "#b38956"
+active-border-foreground = "#31363a"
