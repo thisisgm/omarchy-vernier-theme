@@ -68,9 +68,9 @@ neutral ring cannot carry twelve meanings. Clearing AA against the lightest
 surface puts a floor at OKLab lightness 0.616, and a base colour is capped at
 0.800 so its bright variant does not land in pastel. The twelve end up between
 0.659 and 0.885, a span of 0.23 to hold twelve meanings. Under dichromacy the
-red-green axis is gone, so hue can only help along blue-yellow. The ring is held at **C 0.105**, which is where a chroma sweep
-stopped buying separation, and still well under the 0.125 a fully coloured ring
-wants.
+red-green axis is gone, so hue can only help along blue-yellow. The ring is held
+at **C 0.105**, which is where a chroma sweep stopped buying separation, and
+still well under the 0.125 a fully coloured ring wants.
 
 The accent is solved as a thirteenth meaning, not left out of it. Focus is a
 distinct thing from an error or a success, so `#b38956` sits in the same
