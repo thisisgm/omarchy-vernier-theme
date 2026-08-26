@@ -40,8 +40,8 @@ shape and fixes these:
 | Surface ladder, OKLab steps | 0.019, 0.022, 0.051 | even, 0.0311 throughout |
 | Emphasis ink vs body ink | `bright_foreground` sits **0.098 darker** than `foreground` | ordered, emphasis is the lightest rung |
 | Ring colours clearing WCAG AA on all four surfaces | 6 of 12 | **12 of 12** |
-| Tightest cross-meaning pair in the ring, worst case over normal, protan, deutan and tritan vision | 0.0222, `red` against `bright_blue` | **0.0469** |
-| One hex serving two meanings | `cyan` and `bright_cyan` are both `#707070` | every ring colour distinct |
+| Tightest pair meaning different things, worst case over normal, protan, deutan and tritan vision. A colour and its own bright variant are one meaning, so that pair is excluded | 0.0222, `red` against `bright_blue` | **0.0469** |
+| A colour and its bright variant sharing one hex | `cyan` and `bright_cyan` are both `#707070` | all twelve distinct |
 | Accent against its nearest ring colour | not a constraint | **0.0534** |
 | A diff's `+` against its `-` | **inverted**, `bright_green` sits 0.290 darker than `bright_red` | `+` leads by 0.0685 for every viewer |
 
@@ -80,9 +80,11 @@ base at a lightness step solved per family, 0.108 to 0.119, with chroma eased
 5 percent and then clipped to the sRGB gamut. The clip is what it sounds like:
 `bright_red` and `bright_blue` sit on the gamut boundary and lose 15 and 18
 percent of their base chroma rather than 5. Every family still separates by
-lightness, which is the property the step exists for. Solving all twelve independently scored better on paper
-and produced `green` and `bright_green` at the same hex, which is the exact
-defect this theme exists to fix.
+lightness, which is the property the step exists for.
+
+Solving all twelve independently scored better on paper and produced `green` and
+`bright_green` at the same hex, which is the exact defect this theme exists to
+fix.
 
 Red is the one exemption: it carries 20 percent more chroma, because an error
 that fails to alarm has failed.
@@ -138,9 +140,9 @@ edge never picks up the dark fringe that blending encoded sRGB produces. `audit.
 re-renders each master from source and compares it byte for byte to the shipped
 PNG, then checks that no pixel falls outside the range of the fills that built the
 frame and that over 99 percent of pixels are exactly one fill. All five pass at
-99.8 percent flat with zero overshoot. That renderer and its audit are not in
-this repo, which ships only the theme; they live alongside the other tooling in
-the omarchy repo they were built in.
+99.8 percent flat with zero overshoot. That renderer and its audit are not part
+of this repo and are not published; this repo ships the theme. The figures above
+are what they reported on exactly these files.
 
 ### 1-surfaces
 
@@ -177,8 +179,10 @@ The same surface ladder, dark leading, on content ink. The only light ground in 
 Terminal colours render at Omarchy's stock window opacity, `0.985` focused and
 `0.96` unfocused, so on-screen values sit slightly off the literal hex. That is a
 compositor setting shared by every Omarchy theme, not a property of this one.
-Omarchy applies it as a window rule rather than a decoration variable, so the
-override goes in `~/.config/hypr/windows.lua`:
+Omarchy applies it as a window rule rather than a decoration variable, and
+`~/.config/hypr/hyprland.lua` requires only `monitors`, `input`, `bindings`,
+`looknfeel` and `autostart`, so a `windows.lua` of your own is never read. Append
+the rule to `~/.config/hypr/looknfeel.lua`, which is loaded, then `hyprctl reload`:
 
 ```lua
 o.window({ tag = "default-opacity" }, { opacity = "1.0 1.0" })

@@ -1,5 +1,3 @@
-# active-border is the transient category, surfaces that want you now, so it keeps the accent.
-# active-border-foreground is for cards you opened on purpose, so it stays neutral.
 [hyprland]
-active-border            = "#b38956"
-active-border-foreground = "#31363a"
+active-border            = "#b38956"   # transient surfaces that want you now
+active-border-foreground = "#31363a"   # cards you opened on purpose, so neutral

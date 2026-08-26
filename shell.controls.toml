@@ -1,5 +1,4 @@
-# Normal and hover are ink at rising alpha; selected is brighter ink; focus is the only state that gets colour.
-# The stock template makes focus identical to hover, which leaves keyboard users no way to tell one from the other.
+# Focus is the only state that gets colour; the stock template makes it identical to hover.
 [controls]
 normal-color        = "#b3b9bd"
 normal-fill-alpha   = 0.03
