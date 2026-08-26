@@ -8,7 +8,7 @@ accent = "#b38956"
 selection = "#31363a"   # the selection highlight; foreground on it is 7.56:1
 muted     = "#868d93"   # comments: the lowest rung clearing AA on all four surfaces
 
-# Surface ladder, even OKLab steps of 0.0311 on hue 236.68.
+# Surface ladder on hue 236.68, even steps of 0.0307 before 8-bit quantisation.
 darker_background  = "#080a0b"   # deepest: code blocks, lock screen
 dark_background    = "#0e1112"   # chrome: bar, sidebars
 background         = "#14181a"   # canvas: terminal, app bodies
