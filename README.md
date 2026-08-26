@@ -24,8 +24,8 @@ rather than chosen:
   Solitude's twelve-colour slate ladder;
 - the chroma each **surface and ink** carries comes from a least-squares fit of
   Solitude's own chroma against lightness, `C(L) = 0.0660 * L^1.286 * (1-L)^1.117`,
-  residual rms 0.00425. The ring does not use it: the ring is held at a uniform
-  chroma, and the accent at its own, both stated below;
+  residual rms 0.00425. The ring does not use it: the six base ring colours are
+  held at one uniform chroma and the accent at its own, both stated below;
 - the accent hue, **70.9**, is the chroma-weighted mean hue of Solitude's two
   warm inks, `#cbc2be` and `#c9c2b4`. Solitude has a warm direction already; it
   just never spends it on anything;
@@ -39,7 +39,7 @@ them: it is a constraint Solitude never had and Vernier adds.
 
 | | Solitude | Vernier |
 |---|---|---|
-| Surface ladder, OKLab steps | 0.019, 0.022, 0.051 | even, 0.0311 throughout, which the Surfaces table below rounds to three places |
+| Surface ladder, OKLab steps | 0.019, 0.022, 0.051 | even by construction at 0.0307; 8-bit quantisation lands them at 0.0320, 0.0309 and 0.0303 |
 | Emphasis ink vs body ink | `bright_foreground` sits **0.098 darker** than `foreground` | ordered, emphasis is the lightest rung |
 | Ring colours clearing WCAG AA on all four surfaces | 6 of 12 | **12 of 12** |
 | Tightest pair meaning different things, worst case over normal, protan, deutan and tritan vision. A colour and its own bright variant are one meaning, so that pair is excluded | 0.0222, `red` against `bright_blue` | **0.0469** |
@@ -66,10 +66,9 @@ Foreground over background measures 11.06:1.
 Solitude's ring is deliberately near-neutral, and measurement says a fully
 neutral ring cannot carry twelve meanings. Clearing AA against the lightest
 surface puts a floor at OKLab lightness 0.616, and a base colour is capped at
-0.800 so its bright variant does not land in pastel. With the bright step
-counted that leaves 0.616 to 0.950, a band of about 0.33 to hold twelve colours.
-Under dichromacy the red-green axis is gone, so hue can only help along
-blue-yellow. The ring is held at **C 0.105**, which is where a chroma sweep
+0.800 so its bright variant does not land in pastel. The twelve end up between
+0.659 and 0.885, a span of 0.23 to hold twelve meanings. Under dichromacy the
+red-green axis is gone, so hue can only help along blue-yellow. The ring is held at **C 0.105**, which is where a chroma sweep
 stopped buying separation, and still well under the 0.125 a fully coloured ring
 wants.
 
@@ -101,6 +100,11 @@ that fails to alarm has failed.
 | `dark_background` | `#0e1112` | 0.175 |
 | `background` | `#14181a` | 0.206 |
 | `lighter_background` | `#1b1f21` | 0.236 |
+
+One more rung sits on the same ladder without a `colors.toml` key, because
+Omarchy has no key for it. `#626a6f` at lightness 0.520 is the neutral border
+`shell.hyprland.toml` gives to menus, tooltips and popups: the lowest rung that
+still clears 3:1 against the raised card it outlines, measured 3.02:1.
 
 ### Ink
 
