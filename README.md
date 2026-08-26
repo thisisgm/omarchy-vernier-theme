@@ -56,8 +56,9 @@ Foreground over background measures 11.06:1.
    carries the chroma its lightness earns. Paper and ink are the same stone.
 2. **One voice.** Brass `#b38956` is the only colour allowed to be loud, and it
    means exactly one thing: this is what has focus. sRGB tops out at C 0.142 on
-   this hue at this lightness, and past about 0.10 the blue channel bottoms out
-   and brass turns to mustard, so it is held at C 0.085.
+   this hue at this lightness, where the blue channel is down to 1 of 255 and the
+   colour has gone to mustard. It is held at C 0.085, where blue still reads
+   86, which is what keeps it brass.
 3. **Everything clears AA.** All twelve ring colours clear 4.5:1 against all four
    surfaces. That requirement is what costs the ring its lightness range, and it
    is why the ring is solved rather than picked.
