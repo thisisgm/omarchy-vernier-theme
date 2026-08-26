@@ -24,8 +24,9 @@ rather than chosen:
   Solitude's twelve-colour slate ladder;
 - the chroma each **surface and ink** carries comes from a least-squares fit of
   Solitude's own chroma against lightness, `C(L) = 0.0660 * L^1.286 * (1-L)^1.117`,
-  residual rms 0.00425. The ring does not use it: the six base ring colours are
-  held at one uniform chroma and the accent at its own, both stated below;
+  residual rms 0.00425. The ring does not use it: five of the six base ring
+  colours are held at one chroma, red carries more by design, and the accent has
+  its own, all stated below;
 - the accent hue, **70.9**, is the chroma-weighted mean hue of Solitude's two
   warm inks, `#cbc2be` and `#c9c2b4`. Solitude has a warm direction already; it
   just never spends it on anything;
@@ -65,12 +66,17 @@ Foreground over background measures 11.06:1.
 
 Solitude's ring is deliberately near-neutral, and measurement says a fully
 neutral ring cannot carry twelve meanings. Clearing AA against the lightest
-surface puts a floor at OKLab lightness 0.616, and a base colour is capped at
-0.800 so its bright variant does not land in pastel. The twelve end up between
+surface puts a floor at OKLab lightness 0.616, and the twelve end up between
 0.659 and 0.885, a span of 0.23 to hold twelve meanings. Under dichromacy the
-red-green axis is gone, so hue can only help along blue-yellow. The ring is held
-at **C 0.105**, which is where a chroma sweep stopped buying separation, and
-still well under the 0.125 a fully coloured ring wants.
+red-green axis is gone, so hue can only help along blue-yellow.
+
+Chroma is the other lever, and it is spent sparingly. Five of the six base
+colours are solved at **C 0.105**, which is where a chroma sweep stopped
+buying separation, and 8-bit quantisation lands them at 0.105 or 0.106; `red`
+sits at 0.126, the 20 percent exemption below; and the brights land between
+0.086 and 0.107 once eased and gamut-clipped. That is a restrained
+ring by intent, nearer Solitude's near-neutral one than a fully coloured
+palette.
 
 The accent is solved as a thirteenth meaning, not left out of it. Focus is a
 distinct thing from an error or a success, so `#b38956` sits in the same
@@ -101,10 +107,11 @@ that fails to alarm has failed.
 | `background` | `#14181a` | 0.206 |
 | `lighter_background` | `#1b1f21` | 0.236 |
 
-One more rung sits on the same ladder without a `colors.toml` key, because
-Omarchy has no key for it. `#626a6f` at lightness 0.520 is the neutral border
-`shell.hyprland.toml` gives to menus, tooltips and popups: the lowest rung that
-still clears 3:1 against the raised card it outlines, measured 3.02:1.
+One more colour sits on the same hue without a `colors.toml` key, because Omarchy
+has no key for it. `#626a6f` at lightness 0.519 is the neutral border
+`shell.hyprland.toml` gives to menus, tooltips and popups. It is not a step on
+the ladder above; it is simply the darkest colour on that hue which still clears
+3:1 against the raised card it outlines, measured 3.02:1.
 
 ### Ink
 
