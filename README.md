@@ -141,21 +141,26 @@ edge never picks up the dark fringe that blending encoded sRGB produces.
 The flat-fill claim you can confirm on the shipped PNGs without trusting me.
 Every master is 6016 x 3384, and its eleven most common colours account for at
 least 99.80 percent of its pixels. `4-palette` carries twelve cards plus a
-ground, so for that one it is the top thirteen. Everything else is the one-pixel
-anti-aliased seam where two shapes meet.
+ground, so for that one it is the top thirteen. What is left is the one-pixel
+anti-aliased seam along every shape edge, against the ground or against whichever
+card lies beneath.
 
-This needs a colour histogram, not a count of distinct colours. A distinct count
-returns between 859 and 3985 values depending on the master, because every seam
-pixel is its own intermediate blend, and a reader who ran that would think the
-claim had failed:
+This needs a colour histogram rather than a count of distinct colours. A distinct
+count returns between 859 and 3985 values depending on the master, because those
+seams take intermediate values the flat fills never use, and a reader who ran
+that would think the claim had failed. Pass the file and its fill count:
 
 ```python
 import numpy as np
 from PIL import Image
 
-a = np.asarray(Image.open("backgrounds/1-surfaces.png").convert("RGB")).reshape(-1, 3)
-_, counts = np.unique(a, axis=0, return_counts=True)
-print(np.sort(counts)[-11:].sum() / len(a))    # 0.9983
+def flat_share(path, fills):
+    a = np.asarray(Image.open(path).convert("RGB")).reshape(-1, 3)
+    _, counts = np.unique(a, axis=0, return_counts=True)
+    return round(np.sort(counts)[-fills:].sum() / len(a), 5)
+
+print(flat_share("backgrounds/1-surfaces.png", 11))   # 0.99833
+print(flat_share("backgrounds/4-palette.png", 13))    # 0.99798
 ```
 
 That each master is also byte-identical to what its source renders is not
