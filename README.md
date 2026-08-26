@@ -25,8 +25,8 @@ rather than chosen:
 - the chroma each **surface and ink** carries comes from a least-squares fit of
   Solitude's own chroma against lightness, `C(L) = 0.0660 * L^1.286 * (1-L)^1.117`,
   residual rms 0.00425. The ring does not use it: five of the six base ring
-  colours are held at one chroma, red carries more by design, and the accent has
-  its own, all stated below;
+  colours are solved at one chroma, red carries more by design, and the accent
+  has its own, all stated below;
 - the accent hue, **70.9**, is the chroma-weighted mean hue of Solitude's two
   warm inks, `#cbc2be` and `#c9c2b4`. Solitude has a warm direction already; it
   just never spends it on anything;
@@ -74,9 +74,7 @@ Chroma is the other lever, and it is spent sparingly. Five of the six base
 colours are solved at **C 0.105**, which is where a chroma sweep stopped
 buying separation, and 8-bit quantisation lands them at 0.105 or 0.106; `red`
 sits at 0.126, the 20 percent exemption below; and the brights land between
-0.086 and 0.107 once eased and gamut-clipped. That is a restrained
-ring by intent, nearer Solitude's near-neutral one than a fully coloured
-palette.
+0.086 and 0.107 once eased and gamut-clipped.
 
 The accent is solved as a thirteenth meaning, not left out of it. Focus is a
 distinct thing from an error or a success, so `#b38956` sits in the same
