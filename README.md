@@ -138,15 +138,29 @@ Flat fills, no shadow, no gradient, and no dither, because a frame of flat fills
 has no gradient to band. Shapes are composited by coverage in linear light, so an
 edge never picks up the dark fringe that blending encoded sRGB produces.
 
-One of those properties you can check on the shipped PNGs yourself, with any tool
-that counts colours and needing no trust in me: every master is 6016 x 3384, and
-99.8 percent of its pixels are exactly one of eleven flat colours, thirteen for
-`4-palette`, which carries twelve cards plus its ground. The rest are the
-one-pixel anti-aliased seams between shapes.
+The flat-fill claim you can confirm on the shipped PNGs without trusting me.
+Every master is 6016 x 3384, and its eleven most common colours account for at
+least 99.80 percent of its pixels. `4-palette` carries twelve cards plus a
+ground, so for that one it is the top thirteen. Everything else is the one-pixel
+anti-aliased seam where two shapes meet.
 
-The other property, that each master is byte-identical to what its source
-renders, needs the renderer, and the renderer is not published. Take that one as
-an author's claim rather than something you can confirm from this repo.
+This needs a colour histogram, not a count of distinct colours. A distinct count
+returns between 859 and 3985 values depending on the master, because every seam
+pixel is its own intermediate blend, and a reader who ran that would think the
+claim had failed:
+
+```python
+import numpy as np
+from PIL import Image
+
+a = np.asarray(Image.open("backgrounds/1-surfaces.png").convert("RGB")).reshape(-1, 3)
+_, counts = np.unique(a, axis=0, return_counts=True)
+print(np.sort(counts)[-11:].sum() / len(a))    # 0.9983
+```
+
+That each master is also byte-identical to what its source renders is not
+something this repo lets you check, because the renderer is not published. Take
+that one as an author's claim.
 
 ### 1-surfaces
 
