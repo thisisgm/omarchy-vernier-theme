@@ -141,7 +141,9 @@ edge never picks up the dark fringe that blending encoded sRGB produces.
 One of those properties you can check on the shipped PNGs yourself, with any tool
 that counts colours and needing no trust in me: every master is 6016 x 3384, and
 99.8 percent of its pixels are exactly one of eleven flat colours, thirteen for
-`4-palette`, which carries twelve cards plus its ground. The remainder are the one-pixel anti-aliased seams between shapes.
+`4-palette`, which carries twelve cards plus its ground. The rest are the
+one-pixel anti-aliased seams between shapes.
+
 The other property, that each master is byte-identical to what its source
 renders, needs the renderer, and the renderer is not published. Take that one as
 an author's claim rather than something you can confirm from this repo.
