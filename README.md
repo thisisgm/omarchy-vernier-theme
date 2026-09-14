@@ -232,6 +232,7 @@ Solitude's published palette.
 ## Support
 
 If this saved you an afternoon, you can
+[sponsor me on GitHub](https://github.com/sponsors/thisisgm) or
 [buy me a coffee](https://buymeacoffee.com/thisisgm).
 
 ## License
